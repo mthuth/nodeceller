@@ -28,5 +28,5 @@ app.post('/ext/shopify/order', shopifyOrder.add);
 app.put('/ext/shopify/order/:id', shopifyOrder.update);
 app.delete('/ext/shopify/order/:id', shopifyOrder.delete);
 
-app.listen(3000);
-console.log('Listening on port 3000...');
+app.listen(443);
+console.log('Listening on port 443...');
