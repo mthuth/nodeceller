@@ -1,12 +1,28 @@
 {
-    "name": "wine-cellar",
-    "description": "Wine Cellar Application",
-    "version": "0.0.1",
-    "engines": {
-    	"node": "4.x"
-    },
-    "private": true,
-    "dependencies": {
-        "express": "3.x"
-    }
+  "name": "wine-cellar",
+  "description": "Wine Cellar Application",
+  "version": "0.0.1",
+  "engines": {
+    "node": "4.x"
+  },
+  "private": true,
+  "dependencies": {
+    "express": "^3.21.2",
+    "mongo": "^0.1.0"
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "main": "server.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mthuth/nodeceller.git"
+  },
+  "author": "Matt Huth",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mthuth/nodeceller/issues"
+  },
+  "homepage": "https://github.com/mthuth/nodeceller#readme"
 }
