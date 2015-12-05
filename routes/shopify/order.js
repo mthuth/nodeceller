@@ -42,6 +42,7 @@ exports.findById = function(req, res) {
 };
 
 exports.findAll = function(req, res) {
+    console.log("Finding all Shopify Orders");
     db.collection('shopifyOrders', function(err, collection) {
         console.log("Collection: " + collection);
         collection.find().toArray(function(err, items) {
