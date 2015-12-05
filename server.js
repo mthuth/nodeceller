@@ -22,11 +22,11 @@ app.post('/shopify/order', shopifyOrder.add);
 app.put('/shopify/order/:id', shopifyOrder.update);
 app.delete('/shopify/order/:id', shopifyOrder.delete);
 
-app.get('/ext/shopify/order', extShopifyOrder.findAll);
-app.get('/ext/shopify/order/:id', shopifyOrder.findById);
-app.post('/ext/shopify/order', shopifyOrder.add);
-app.put('/ext/shopify/order/:id', shopifyOrder.update);
-app.delete('/ext/shopify/order/:id', shopifyOrder.delete);
+//app.get('/ext/shopify/order', extShopifyOrder.findAll);
+//app.get('/ext/shopify/order/:id', shopifyOrder.findById);
+//app.post('/ext/shopify/order', shopifyOrder.add);
+//app.put('/ext/shopify/order/:id', shopifyOrder.update);
+//app.delete('/ext/shopify/order/:id', shopifyOrder.delete);
 
 app.listen(process.env.PORT || 3000)
 console.log('Listening on port 3000...');

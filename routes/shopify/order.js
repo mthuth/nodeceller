@@ -7,8 +7,8 @@ var Server = mongo.Server,
 
 var server = new Server('localhost', 27017, {auto_reconnect: true});
 //var server = new Server('ds053794.mongolab.com', 53794, {auto_reconnect: true});
-db = new Db('shopifyOrdersdb', server);
-//db.authenticate('mongo','mongo', function(err, res));
+//db = new Db('shopifyOrdersdb', server);
+
 
 db.open(function(err, db) {
     if(!err) {
@@ -20,6 +20,7 @@ db.open(function(err, db) {
             }
         });
     }
+    db.authenticate('mongo','mongo', function(err, res) {});
 });
 
 exports.findById = function(req, res) {
