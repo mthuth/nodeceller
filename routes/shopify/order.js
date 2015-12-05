@@ -31,6 +31,7 @@ exports.findById = function(req, res) {
         //collection.findOne()
         //collection.find().limit(1).next(function(err, doc){});
         console.log("id: " + new ObjectID(id));
+        console.log("error: " + err);
         collection.findOne({"_id": new ObjectID(id)}, function(err, item){
             console.log("item: " + item);
             res.send(item);
