@@ -1,28 +1,59 @@
 var mongo = require('mongodb');
 
-var Server = mongo.Server,
-    Db = mongo.Db,
-    ObjectID = require('mongodb').ObjectID,
-    BSON = mongo.BSONPure;
-
-//var server = new Server('localhost', 27017, {auto_reconnect: true});
-var server = new Server('ds053794.mongolab.com', 53794, {auto_reconnect: true});
-//db = new Db('shopifyOrdersdb', server);
+//var Server = mongo.Server,
+//    Db = mongo.Db,
+//    ObjectID = require('mongodb').ObjectID,
+//    BSON = mongo.BSONPure;
 
 
-db.open(function(err, db) {
-    if(!err) {
-        console.log("Connected to 'shopifyOrdersdb' database");
-        db.collection('shopifyOrders', {strict:true}, function(err, collection) {
+
+var MongoClient = require('mongodb').MongoClient;
+var db;
+console.log("this is a test message");
+// Initialize connection once
+
+
+MongoClient.connect("mongodb://mongo:mongo@ds033875.mongolab.com:33875/ecom", function(err, database) {
+   if(!err) {
+    console.log("test message 2");
+            console.log("Connected to 'shopifyOrdersdb' database");
+            database.collection('shopifyOrders', {strict:true}, function(err, collection) {
             if (err) {
-                console.log("The 'shopifyOrderss' collection doesn't exist. Creating it with sample data...");
+                console.log("The 'shopifyOrders' collection doesn't exist. Creating it with sample data...");
                 populateDB();
             }
         });
     }
-    db.authenticate('mongo','mongo', function(err, res) {});
-});
+    if(err) {
+        console.log("error: " + err);
+    }
+    if(err) throw err;
 
+    console.log("database: " + database);
+    db = database;
+
+});   
+
+//var server = new Server('localhost', 27017, {auto_reconnect: true});
+//var server = new Server('ds053794.mongolab.com', 53794, {auto_reconnect: true});
+//db = new Db('shopify_creditials', server);
+//db.authenticate('mongo','mongo', function(err, res) {});
+/*
+db.open(function(err, db) {
+    db.authenticate('mongo','mongo', function(err, res) {});
+    //console.log("error: " + res);
+    if(!err) {
+        console.log("Connected to 'shopifyOrdersdb' database");
+        db.collection('shopifyOrders', {strict:true}, function(err, collection) {
+            if (err) {
+                console.log("The 'shopifyOrders' collection doesn't exist. Creating it with sample data...");
+                populateDB();
+            }
+        });
+    }
+    
+});
+*/
 exports.findById = function(req, res) {
     var id = req.params.id;
     console.log('Retrieving shopifyOrders: ' + id);
@@ -128,7 +159,11 @@ var populateDB = function() {
     }];
 
     db.collection('shopifyOrders', function(err, collection) {
-        collection.insert(shopifyOrders, {safe:true}, function(err, result) {});
+        db.authenticate('mongo','mongo', function(err, res) { console.log("error: " + err) });
+        collection.insert(shopifyOrders, {safe:true}, function(err, result) {
+            console.log('result: ' + err); 
+        });
+
     });
 
 };

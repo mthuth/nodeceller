@@ -1,7 +1,7 @@
 var express = require('express'),
-    wine = require('./routes/wines');
-    shopifyOrder = require('./routes/shopify/order')
-    extShopifyOrder = require('./routes/ext/shopify/order')
+    wine = require('./routes/wines'),
+    shopifyOrder = require('./routes/shopify/order'),
+    extShopifyOrder = require('./routes/ext/shopify/order');
 
 var app = express();
 
